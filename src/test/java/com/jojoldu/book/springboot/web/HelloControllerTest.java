@@ -8,7 +8,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
@@ -22,9 +21,26 @@ class HelloControllerTest {
 
     @Test
     void hello가_리턴된다() throws Exception {
+        //given
         String hello = "hello";
+
+        //when //then
         mvc.perform(get("/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(hello));
+    }
+    @Test
+    void helloDto가_리턴된다() throws Exception {
+        //given
+        String name = "hello";
+        int amount = 1000;
+
+        //when //then
+        mvc.perform(get("/hello/dto")
+                .param("name", name)
+                .param("amount", String.valueOf(amount)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value(name))
+                .andExpect(jsonPath("$.amount").value(amount));
     }
 }
