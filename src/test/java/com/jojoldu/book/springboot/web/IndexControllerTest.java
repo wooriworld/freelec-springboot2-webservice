@@ -19,6 +19,6 @@ class IndexControllerTest {
     void 메인페이지_로딩() {
         String url = "/";
         String body = restTemplate.getForObject(url, String.class);
-        assertThat(body).contains("스프링 부트로 시작하는 웹 서비스");
+        assertThat(body).contains("스프링부트로 시작하는 웹 서비스");
     }
 }
