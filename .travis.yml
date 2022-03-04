@@ -43,7 +43,7 @@ deploy:
       region: ap-northeast-2
       wait-until-deployed: true
 
-# CI실행완료 시 메일로 알람
+# CI실행완료 시 메일로 알람 왜안되지
 notifications:
   email:
     recipients:
